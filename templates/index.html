@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>料理クイズ</title>
+</head>
+<body>
+    <h1>🍴 栄養クイズ：この料理のカロリーは？</h1>
+    <h2>{{ dish.name }}</h2>
+    <img src="{{ url_for('static', filename=dish.image) }}" width="300"><br><br>
+
+    <form action="/check/{{ dish.id }}" method="post">
+        {% for c in choices %}
+            <input type="radio" name="answer" value="{{ c }}"> {{ c }} kcal<br>
+        {% endfor %}
+        
+        <button type="submit">答える</button>
+    </form>
+</body>
+</html>
